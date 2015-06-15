@@ -1,8 +1,11 @@
 <?php 
-if (isset($_GET['p']))
-  $packageId = $_GET['p'];
+if (isset($_GET['q'])){
+  $packageId = $_GET['q'];
+  $packageId=rawurldecode($packageId);
+  echo $packageId;  
+}
 if (isset($packageId)){
-	if(strcasecmp($packageId,"Hello! How are you?")==0)
+	if(strcasecmp($packageId,"Hello! How are you?")==0 || (stristr($packageId,"How") ==0&& stristr($packageId,"you")==0))
 		$ans['answer'] = "Hello, Kitty! I am fine.";
 	else if(strcasecmp($packageId,"Hi! What is your name?")==0)
 		$ans['answer'] = "My name is Heruko.";
