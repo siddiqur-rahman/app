@@ -1,18 +1,23 @@
-<?php 
+<?php
+//take the question provided in get method 
 if (isset($_GET['q'])){
-  $packageId = $_GET['q'];
-  $packageId=rawurldecode($packageId);
-  //echo $packageId;  
-}
-if (isset($packageId)){
-	if(strcasecmp($packageId,"Hello! How are you?")==0 || (stristr($packageId,"How") ==0&& stristr($packageId,"you")==0))
-		$ans['answer'] = "Hello, Kitty! I am fine.";
-	else if(strcasecmp($packageId,"Hi! What is your name?")==0 || (stristr($packageId,"What") ==0&& stristr($packageId,"name")==0))
-		$ans['answer'] = "My name is Siddiqur Rahman.";
-	else if(strcasecmp($packageId,"Good morning! I am Kitty! It's a pleasure to meet you!")==0 || (stristr($packageId,"meet") ==0&& stristr($packageId,"pleasure")==0))
-		$ans['answer'] = "Good morning! Thank you,nice to meet you too.";
+  $query = $_GET['q'];
+  $query=rawurldecode($query);
+  //echo $query;  
 }
 
+if (isset($query)){
+	//first question 
+	if(strcasecmp($query,"Hello! How are you?")==0 || (stristr($query,"How") !=false && stristr($query,"you")!=false))
+		$ans['answer'] = "Hello, Kitty! I am fine.";
+	//second question
+	else if(strcasecmp($query,"Hi! What is your name?")==0 || (stristr($query,"What") !=false&& stristr($query,"name")!=false))
+		$ans['answer'] = "My name is Siddiqur Rahman.";
+	//third question
+	else if(strcasecmp($query,"Good morning! I am Kitty! It's a pleasure to meet you!")==0 || (stristr($query,"meet") !=false&& stristr($query,"pleasure")!=false))
+		$ans['answer'] = "Good morning! Thank you,nice to meet you too.";
+}
+// json output 
 header('Content-type: application/json');
 echo json_encode($ans);
 ?>

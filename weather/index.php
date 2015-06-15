@@ -1,27 +1,32 @@
 <?php 
 if (isset($_GET['q'])){
-  $packageId = $_GET['q'];
-  $packageId=rawurldecode($packageId);
+  $query = $_GET['q'];
+  $query=rawurldecode($query);
 }	
-if (isset($packageId)){
-	$packageId=stristr($packageId,"?",true);
-	$temp=strrev($packageId);
+if (isset($query)){
+	// finding the name of the CITY
+	$query=stristr($query,"?",true);
+	$temp=strrev($query);
 	$temp2=explode(" ",$temp);
-	$loc=strrev($temp2[0]);
+	$city=strrev($temp2[0]);
 	
-	$url='http://api.openweathermap.org/data/2.5/weather?q='.$loc;	
+	// getting the json formate output from openweathermap api
+	$url='http://api.openweathermap.org/data/2.5/weather?q='.$city;	
 	$json = file_get_contents($url);
 	$array = json_decode($json, true);
 	
 	$ans['answer']="";
-	if(stristr($packageId,"temperature")!=false){
+	// temperature output
+	if(stristr($query,"temperature")!=false){
 		$ans['answer'] = $array['main']['temp']. " K";
 	}
-	else if(stristr($packageId,"humidity")!=false){
+	// humidity
+	else if(stristr($query,"humidity")!=false){
 		$ans['answer'] = $array['main']['humidity']."";
 	}
-	else if(stristr($packageId,"weather")!=false){
-		$a=stristr($packageId,"there");
+	else if(stristr($query,"weather")!=false){
+		// parsing query to find Rain/cloud / clean
+		$a=stristr($query,"there");
 		$a2=explode(" ",$a);
 		$con=$a2[1];
 		$res='No';
@@ -33,7 +38,7 @@ if (isset($packageId)){
 		$ans['answer'] = $res;
 	}
 }
-
+// json output
 header('Content-type: application/json');
 echo json_encode($ans);
 ?>
