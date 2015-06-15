@@ -1,7 +1,7 @@
 <?php 
 if (isset($_GET['q'])){
   $packageId = $_GET['q'];
-  //$packageId=rawurldecode($packageId);
+  $packageId=rawurldecode($packageId);
   echo $packageId;  
 }
 if (isset($packageId)){
