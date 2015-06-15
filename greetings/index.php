@@ -1,9 +1,6 @@
 <?php 
 if (isset($_GET['p']))
   $packageId = $_GET['p'];
-//else if (isset($_POST['packageid']))
-// $packageId = $_POST['packageid'];
-//$ans['answer']=" no value";
 if (isset($packageId)){
 	if(strcasecmp($packageId,"Hello! How are you?")==0)
 		$ans['answer'] = "Hello, Kitty! I am fine.";
