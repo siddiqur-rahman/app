@@ -3,10 +3,11 @@
 if (isset($_GET['q'])){
   $query = $_GET['q'];
   $query=rawurlencode($query);
-  echo $query;  
+  echo $query; echo "<br> <br>" ;
 }
 
 $url='https://www.google.com.bd/search?q='.$query;	
 $result = file_get_contents($url);
 echo $result;
+echo $query; echo "<br> <br>" ;
 ?>
