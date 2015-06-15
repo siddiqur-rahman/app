@@ -6,7 +6,7 @@ if (isset($_GET['q'])){
   echo $query;  
 }
 
-$url='https://www.google.com.bd/search?q='.$query;	
+$url='https://www.google.com.bd/';//search?q='.$query;	
 $result = file_get_contents($url);
 echo $result;
 ?>
