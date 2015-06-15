@@ -1,7 +1,8 @@
 <?php 
-if (isset($_GET['p']))
-  $packageId = $_GET['p'];
-	
+if (isset($_GET['q'])){
+  $packageId = $_GET['q'];
+  $packageId=rawurldecode($packageId);
+}	
 if (isset($packageId)){
 	$packageId=stristr($packageId,"?",true);
 	$temp=strrev($packageId);
