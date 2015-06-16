@@ -10,7 +10,8 @@ $ans['answer']='Your majesty! Jon Snow knows nothing! So do I!';
 
 $url='https://www.google.com/search?q='.$query;	
 $result = file_get_contents($url);
-$narrow=stristr($result,'"_m3b>"');
+
+$narrow=stristr($result,'_m3b');
 echo $narrow; 
 echo "<br>";
 if($narrow!=false){
