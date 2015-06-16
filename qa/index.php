@@ -10,13 +10,14 @@ $ans['answer']='Your majesty! Jon Snow knows nothing! So do I!';
 
 $url='https://www.google.com/search?q='.$query;	
 $result = file_get_contents($url);
-$narrow=stristr($query,"_m3b");
-//echo $narrow; 
-//echo "<br>";
+$narrow=stristr($query,'"_m3b>"');
+echo $narrow; 
+echo "<br>";
 if($narrow!=false){
-	$finalAns=$query=stristr($query,"<",true);
+	$finalAns=stristr($query,"<",true);
 	$ans['answer'] = $finalAns;
 }
 header('Content-type: application/json');
 echo json_encode($ans);
+echo $finalAns;
 ?>
