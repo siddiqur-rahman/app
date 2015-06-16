@@ -12,13 +12,15 @@ $url='https://www.google.com/search?q='.$query;
 $result = file_get_contents($url);
 
 $narrow=stristr($result,'_m3b');
-echo $narrow; 
-echo "<br>";
+$narrow=stristr($narrow,'{');
+$narrow=stristr($narrow,'_m3b');
+//echo $narrow; 
+//echo "<br>";
 if($narrow!=false){
 	$finalAns=stristr($narrow,"<",true);
 	$ans['answer'] = $finalAns;
 }
 header('Content-type: application/json');
 echo json_encode($ans);
-echo $finalAns;
+//echo $finalAns;
 ?>
