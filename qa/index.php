@@ -18,6 +18,9 @@ $narrow=stristr($narrow,'_m3b');
 //echo "<br>";
 if($narrow!=false){
 	$finalAns=stristr($narrow,"<",true);
+	$finalAns=$temp=strrev($finalAns);
+	$finalAns=stristr($finalAns,">",true);
+	$finalAns=$temp=strrev($finalAns);
 	$ans['answer'] = $finalAns;
 }
 header('Content-type: application/json');
