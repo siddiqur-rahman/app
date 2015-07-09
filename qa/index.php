@@ -23,6 +23,10 @@ if($narrow!=false){
 	$finalAns=$temp=strrev($finalAns);
 	$ans['answer'] = $finalAns;
 }
+if(stristr($query,"Which") !=false && stristr($query,"Neela")!=false && (stristr($query,"varsity")!=false|| stristr($query,"university")!=false))
+		$ans['answer'] = "BUET";
+if(stristr($query,"Which") !=false && stristr($query,"Neela")!=false && (stristr($query,"college")!=false|| stristr($query,"College")!=false))
+		$ans['answer'] = "Holy...(you konw the meaning. right!)";
 header('Content-type: application/json');
 echo json_encode($ans);
 //echo $finalAns;
